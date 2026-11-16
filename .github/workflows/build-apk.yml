@@ -32,8 +32,8 @@ jobs:
       - name: Build installable APK
         working-directory: android
         run: |
-          echo "android.kotlinVersion=1.9.25" >> gradle.properties
-          ./gradlew assembleDebug -Pandroid.kotlinVersion=1.9.25
+          sed -i 's/1.9.24/1.9.25/g' build.gradle gradle.properties
+          ./gradlew assembleDebug
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
