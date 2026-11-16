@@ -31,7 +31,9 @@ jobs:
 
       - name: Build installable APK
         working-directory: android
-        run: ./gradlew assembleDebug
+        run: |
+          echo "android.kotlinVersion=1.9.25" >> gradle.properties
+          ./gradlew assembleDebug -Pandroid.kotlinVersion=1.9.25
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
